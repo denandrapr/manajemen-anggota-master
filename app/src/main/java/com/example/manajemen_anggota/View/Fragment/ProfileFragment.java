@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -22,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ProfileFragment extends Fragment{
+public class ProfileFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private FirebaseAuth mAuth;
     ArrayAdapter<CharSequence> adapter;
@@ -35,8 +36,17 @@ public class ProfileFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
         mAuth = FirebaseAuth.getInstance();
-        adapter = ArrayAdapter.createFromResource(this, R.array.countries_arry,R.layout.)
+        adapter = ArrayAdapter.createFromResource(getActivity(), R.array.countries_arry,R.layout.item_profile);
+        mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(this);
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (id == 3){
+            Toast.makeText(getActivity(), adapter.getItem(position), Toast.LENGTH_SHORT).show();
+        }
     }
 
 //    @OnClick(R.id.logout)
