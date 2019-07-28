@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "379146460352-iclqjv260ihcpbivu1ggkekqe6ff4qh2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.manajemen_anggota",
+            "certificate_hash": "43fbd3e187237a3c2387904f562c2f30b77d68c9"
+          }
+        },
+        {
           "client_id": "379146460352-542pe1di6g9tb9vt283dmn34tcik45tu.apps.googleusercontent.com",
           "client_type": 3
         }
