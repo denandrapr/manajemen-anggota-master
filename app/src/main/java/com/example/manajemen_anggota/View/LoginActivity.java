@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         progress.setMessage("Proses Login...");
         progress.show();
 
-        usernm = inputNim.getText().toString();
+        usernm = inputNim.getText().toString()+"@stikom.edu";
         pass = inputPass.getText().toString();
 
         mAuth.signInWithEmailAndPassword(usernm, pass)
