@@ -4,10 +4,5 @@
     <!--login-->
     <string name="login_nim">NIM</string>
     <string name="login_pass">Password</string>
-    <string-array name="countries_arry">
-        <item>17410100021</item>
-        <item>Denandra Prasetya Laksma Putra</item>
-        <item>17410100021@stikom.edu</item>
-        <item>Logout</item>
-    </string-array>
+    <string name="quotes">"Design is not just what it looks like and feels like. Design is how it works. "</string>
 </resources>
