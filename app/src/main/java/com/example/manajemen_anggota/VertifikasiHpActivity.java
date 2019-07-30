@@ -26,10 +26,6 @@ public class VertifikasiHpActivity extends AppCompatActivity {
 
     @BindView(R.id.nomerHp)
     EditText nomerHape;
-    @BindView(R.id.kode)
-    EditText kode;
-    @BindView(R.id.button)
-    Button btn;
 
     ProgressDialog progress;
     private FirebaseAuth mAuth;
@@ -41,7 +37,6 @@ public class VertifikasiHpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vertifikasi_hp);
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     @OnClick(R.id.buttonVerification)

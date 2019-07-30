@@ -4,5 +4,7 @@
     <!--login-->
     <string name="login_nim">NIM</string>
     <string name="login_pass">Password</string>
-    <string name="quotes">"Design is not just what it looks like and feels like. Design is how it works. "</string>
+    <string name="quotes">\"Design is not just what it looks like and feels like. Design is how it works. \"</string>
+    <string name="dapatkan_kode">Dapatkan Kode</string>
+    <string name="verifikasi_judul">Verifikasi Nomor Anda</string>
 </resources>

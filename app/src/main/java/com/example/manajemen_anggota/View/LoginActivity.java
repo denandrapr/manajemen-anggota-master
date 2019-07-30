@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick (R.id.btnLogin)
     void login(){
+        startActivity(new Intent(this, VertifikasiHpActivity.class));
         progress = new ProgressDialog(LoginActivity.this);
         progress.setCancelable(false);
         progress.setMessage("Proses Login...");
