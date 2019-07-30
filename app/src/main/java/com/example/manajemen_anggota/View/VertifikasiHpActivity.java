@@ -1,4 +1,4 @@
-package com.example.manajemen_anggota;
+package com.example.manajemen_anggota.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.manajemen_anggota.R;
 import com.example.manajemen_anggota.View.LoginActivity;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +31,7 @@ public class VertifikasiHpActivity extends AppCompatActivity {
     ProgressDialog progress;
     private FirebaseAuth mAuth;
     String codesent;
+    final String PHONE_CODE = "+62";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class VertifikasiHpActivity extends AppCompatActivity {
 //        progress.setCancelable(false);
 //        progress.setMessage("Mengirim kode...");
 //        progress.show();
-        String phoneNumber = nomerHape.getText().toString();
+        String phoneNumber = PHONE_CODE+nomerHape.getText().toString();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
                 60,                 // Timeout duration
