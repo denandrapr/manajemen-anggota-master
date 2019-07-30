@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -19,14 +20,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.os.Build.ID;
+
 public class VertifikasiHpActivity extends AppCompatActivity {
 
     @BindView(R.id.nomerHp)
     EditText nomerHape;
-    @BindView(R.id.kode)
-    EditText kode;
-    @BindView(R.id.button)
-    Button btn;
 
     ProgressDialog progress;
     private FirebaseAuth mAuth;
@@ -38,15 +37,14 @@ public class VertifikasiHpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vertifikasi_hp);
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     @OnClick(R.id.buttonVerification)
     void getVerification(){
-        progress = new ProgressDialog(VertifikasiHpActivity.this);
-        progress.setCancelable(false);
-        progress.setMessage("Mengirim kode...");
-        progress.show();
+//        progress = new ProgressDialog(VertifikasiHpActivity.this);
+//        progress.setCancelable(false);
+//        progress.setMessage("Mengirim kode...");
+//        progress.show();
         String phoneNumber = nomerHape.getText().toString();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
@@ -54,12 +52,13 @@ public class VertifikasiHpActivity extends AppCompatActivity {
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
+        mAuth.setLanguageCode(ID);
     }
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
+            Log.d("tag ", phoneAuthCredential.toString());
         }
 
         @Override
@@ -70,6 +69,7 @@ public class VertifikasiHpActivity extends AppCompatActivity {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
+            Log.d("tagg ", s);
             codesent = s;
         }
     };
