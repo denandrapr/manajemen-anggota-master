@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.manajemen_anggota.R;
-import com.example.manajemen_anggota.VertifikasiHpActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

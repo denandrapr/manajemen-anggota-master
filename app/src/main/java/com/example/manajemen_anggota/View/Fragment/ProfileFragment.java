@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.example.manajemen_anggota.Model.ProfileItem;
 import com.example.manajemen_anggota.R;
 import com.example.manajemen_anggota.View.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,8 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemClick
 
     @BindView(R.id.l_view)
     ListView mListView;
+    @BindView(R.id.name)
+    TextView txtName;
 
     public static final String[] isi = new String[]{
             "174101000021",
@@ -65,6 +69,11 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemClick
         ProfileListViewAdapter adapter = new ProfileListViewAdapter(getActivity(), profileItems);
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(this);
+        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+        if (user != null){
+            String uid = user.getEmail();
+            txtName.setText(uid);
+        }
         return view;
     }
 

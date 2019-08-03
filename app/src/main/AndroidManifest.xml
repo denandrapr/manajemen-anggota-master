@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.DokumentasiActivity"></activity>
+        <activity android:name=".View.DokumentasiActivity" />
         <activity android:name=".View.ProkerActivity" />
         <activity android:name=".View.KasActivity" />
         <activity android:name=".View.AlumniAnggotaActivity" />
@@ -22,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VertifikasiHpActivity" />
         <activity android:name=".View.LoginActivity" />
-        <activity android:name=".View.MainActivity" />
+        <activity android:name=".View.MainActivity" >
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
