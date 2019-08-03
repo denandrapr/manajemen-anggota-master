@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
 
     private ProgressDialog progress;
-    String usernm, pass;
+    String nim, email, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,29 +43,33 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick (R.id.btnLogin)
     void login(){
-        startActivity(new Intent(this, VertifikasiHpActivity.class));
         progress = new ProgressDialog(LoginActivity.this);
         progress.setCancelable(false);
         progress.setMessage("Proses Login...");
         progress.show();
-
-        usernm = inputNim.getText().toString()+"@stikom.edu";
+        
+        nim = inputNim.getText().toString();
+        email = nim+"@stikom.edu";
         pass = inputPass.getText().toString();
 
-        mAuth.signInWithEmailAndPassword(usernm, pass)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            progress.dismiss();
-                            Intent i = new Intent(LoginActivity.this, VertifikasiHpActivity.class);
-                            startActivity(i);
-                            finish();
-                        }else{
-                            progress.dismiss();
-                            Toast.makeText(LoginActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+        if (nim.equals("") || pass.equals("")){
+            Toast.makeText(this, "Nim atau Password tidak boleh kosong", Toast.LENGTH_SHORT).show();
+        }else{
+            mAuth.signInWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                progress.dismiss();
+                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(i);
+                                finish();
+                            }else{
+                                progress.dismiss();
+                                Toast.makeText(LoginActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 }

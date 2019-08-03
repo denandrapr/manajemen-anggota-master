@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@android:color/white"
-        app:title="Anggota dan Pengurus"
+        app:title="Anggota dan Alumni"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
