@@ -3,14 +3,18 @@ package com.example.manajemen_anggota.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.manajemen_anggota.Adapter.AnggotaAdapter;
 import com.example.manajemen_anggota.Model.Anggota;
 import com.example.manajemen_anggota.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +28,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -43,7 +48,9 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
     Toolbar toolbar;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
-    private DatabaseReference db;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference anggotaRef = db.collection("Anggota");
+    private AnggotaAdapter adapter;
     private ArrayList<Anggota> mArrayList;
     private List<Anggota> mAnggota = new ArrayList<>();
 
@@ -68,29 +75,31 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
         progressDialog.setMessage("Mengambil data...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        db = FirebaseDatabase.getInstance().getReference();
 
-        db.child("Anggota").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                progressDialog.dismiss();
-                for (DataSnapshot data : dataSnapshot.getChildren()){
-                    try{
-                        Anggota anggota = data.getValue(Anggota.class);
-                        anggota.setKey(data.getKey());
-                        mArrayList.add(anggota);
-                        Log.d("array", "sukses");
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            }
+        Query q = anggotaRef.orderBy("Nim", Query.Direction.DESCENDING);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        FirestoreRecyclerOptions<Anggota> options = new FirestoreRecyclerOptions.Builder<Anggota>()
+                .setQuery(q, Anggota.class)
+                .build();
+        progressDialog.dismiss();
+        adapter = new AnggotaAdapter(options);
+        RecyclerView recyclerView = findViewById(R.id.list_data);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
-            }
-        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     @Override

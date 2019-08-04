@@ -5,25 +5,16 @@ public class Anggota {
     private String Nama;
     private String Nim;
     private String Prodi;
-    private String Key;
 
     public Anggota() {
+        //oke
     }
 
-    public Anggota(String key, String jenkel, String nama, String nim, String prodi) {
-        Key = key;
+    public Anggota(String jenkel, String nama, String nim, String prodi) {
         Jenkel = jenkel;
         Nama = nama;
         Nim = nim;
         Prodi = prodi;
-    }
-
-    public String getKey() {
-        return Key;
-    }
-
-    public void setKey(String key) {
-        Key = key;
     }
 
     public void setJenkel(String jenkel) {
