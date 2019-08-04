@@ -1,12 +1,16 @@
 package com.example.manajemen_anggota.Adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.manajemen_anggota.Model.Anggota;
+import com.example.manajemen_anggota.R;
 
 import java.util.List;
 
@@ -22,14 +26,30 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_anggota, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull List<Object> payloads) {
-        super.onBindViewHolder(holder, position, payloads);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Anggota mAnggota = anggota.get(position);
+
+        holder.nim.setText(mAnggota.getNim());
     }
 
-    public class ViewHolder {
+    @Override
+    public int getItemCount() {
+        return anggota.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView nim;
+//        public TextView StudentNumberTextView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            nim = (TextView) itemView.findViewById(R.id.txtNim);
+        }
     }
 }

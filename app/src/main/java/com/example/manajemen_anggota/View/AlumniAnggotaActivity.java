@@ -55,7 +55,6 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        db = FirebaseDatabase.getInstance().getReference();
 
         getData(user.getEmail());
 
@@ -69,6 +68,7 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
         progressDialog.setMessage("Mengambil data...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+        db = FirebaseDatabase.getInstance().getReference();
 
         db.child("Anggota").addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,7 +77,9 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
                 for (DataSnapshot data : dataSnapshot.getChildren()){
                     try{
                         Anggota anggota = data.getValue(Anggota.class);
-//                        Log.d("data", ""+data.getValue());
+                        anggota.setKey(data.getKey());
+                        mArrayList.add(anggota);
+                        Log.d("array", "sukses");
                     }catch (Exception e){
                         e.printStackTrace();
                     }
