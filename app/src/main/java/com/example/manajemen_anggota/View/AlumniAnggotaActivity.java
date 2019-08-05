@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.manajemen_anggota.Adapter.AnggotaAdapter;
 import com.example.manajemen_anggota.Model.Anggota;
 import com.example.manajemen_anggota.R;
+import com.example.manajemen_anggota.TambahAnggota;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -101,6 +103,7 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
     
     @OnClick(R.id.fab)
     void fabAction(){
-        
+        Intent i = new Intent(AlumniAnggotaActivity.this, TambahAnggota.class);
+        startActivity(i);
     }
 }
