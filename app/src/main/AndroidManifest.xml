@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TambahAnggota"></activity>
         <activity android:name=".View.DokumentasiActivity" />
         <activity android:name=".View.ProkerActivity" />
         <activity android:name=".View.KasActivity" />
@@ -23,8 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.LoginActivity" />
-        <activity android:name=".View.MainActivity" >
-        </activity>
+        <activity android:name=".View.MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

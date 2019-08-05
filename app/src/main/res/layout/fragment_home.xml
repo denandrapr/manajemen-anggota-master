@@ -7,20 +7,28 @@
     android:background="#F3F3F3"
     tools:context=".View.Fragment.HomeFragment">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Home"
-        android:textSize="21sp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/bar"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:text="HOME"
+            android:textColor="@android:color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -32,9 +40,9 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -55,24 +63,24 @@
                     android:layout_weight="1"
                     android:background="@drawable/box_drawable"
                     android:elevation="1dp"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/money"/>
+                        android:src="@drawable/money" />
 
                     <TextView
-                        android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="KAS\nSJN"
-                        android:textSize="16sp"
-                        android:layout_alignParentBottom="true"/>
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="KAS"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -85,34 +93,34 @@
                     android:layout_weight="1"
                     android:background="@drawable/box_drawable"
                     android:elevation="1dp"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/group"/>
+                        android:src="@drawable/group" />
 
                     <TextView
-                        android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/nunito_bold"
                         android:text="Anggota dan\nAlumni"
-                        android:textSize="16sp"
-                        android:layout_alignParentBottom="true"/>
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linear1"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <RelativeLayout
@@ -123,24 +131,24 @@
                     android:layout_weight="1"
                     android:background="@drawable/box_drawable"
                     android:elevation="1dp"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/calendar"/>
+                        android:src="@drawable/calendar" />
 
                     <TextView
-                        android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Proker\nSJN"
-                        android:textSize="16sp"
-                        android:layout_alignParentBottom="true"/>
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="Kegiatan"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -153,24 +161,24 @@
                     android:layout_weight="1"
                     android:background="@drawable/box_drawable"
                     android:elevation="1dp"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/camera"/>
+                        android:src="@drawable/camera" />
 
                     <TextView
-                        android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dokumentasi\nSJN"
-                        android:textSize="16sp"
-                        android:layout_alignParentBottom="true"/>
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="Dokumentasi"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -178,5 +186,20 @@
 
         </RelativeLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Menu"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
