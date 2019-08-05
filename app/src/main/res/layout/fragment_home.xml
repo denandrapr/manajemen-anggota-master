@@ -70,7 +70,7 @@
                         android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="KAS\nSJN"
+                        android:text="KAS"
                         android:textSize="16sp"
                         android:layout_alignParentBottom="true"/>
 
@@ -138,7 +138,7 @@
                         android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Proker\nSJN"
+                        android:text="Kegiatan"
                         android:textSize="16sp"
                         android:layout_alignParentBottom="true"/>
 
@@ -168,7 +168,7 @@
                         android:fontFamily="@font/nunito_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dokumentasi\nSJN"
+                        android:text="Dokumentasi"
                         android:textSize="16sp"
                         android:layout_alignParentBottom="true"/>
 

@@ -5,16 +5,26 @@ public class Anggota {
     private String Nama;
     private String Nim;
     private String Prodi;
+    private String Gambar;
 
     public Anggota() {
         //oke
     }
 
-    public Anggota(String jenkel, String nama, String nim, String prodi) {
+    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar) {
         Jenkel = jenkel;
         Nama = nama;
         Nim = nim;
         Prodi = prodi;
+        Gambar = gambar;
+    }
+
+    public String getGambar() {
+        return Gambar;
+    }
+
+    public void setGambar(String gambar) {
+        Gambar = gambar;
     }
 
     public void setJenkel(String jenkel) {

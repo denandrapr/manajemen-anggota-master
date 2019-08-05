@@ -15,37 +15,27 @@ import com.example.manajemen_anggota.Adapter.AnggotaAdapter;
 import com.example.manajemen_anggota.Model.Anggota;
 import com.example.manajemen_anggota.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AlumniAnggotaActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -64,8 +54,9 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
 
         getData(user.getEmail());
-
+        
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -76,7 +67,7 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        Query q = anggotaRef.orderBy("Nim", Query.Direction.DESCENDING);
+        Query q = anggotaRef;
 
         FirestoreRecyclerOptions<Anggota> options = new FirestoreRecyclerOptions.Builder<Anggota>()
                 .setQuery(q, Anggota.class)
@@ -106,5 +97,10 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+    
+    @OnClick(R.id.fab)
+    void fabAction(){
+        
     }
 }
