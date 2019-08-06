@@ -7,4 +7,12 @@
     <string name="quotes">\"Design is not just what it looks like and feels like. Design is how it works. \"</string>
     <string name="dapatkan_kode">Dapatkan Kode</string>
     <string name="verifikasi_judul">Verifikasi Nomor Anda</string>
+    <string-array name="prodi">
+        <item>S1 Sistem Informasi</item>
+        <item>S1 Teknik Komputer</item>
+        <item>S1 Desain Komunikasi Visual</item>
+        <item>S1 Desain Produk</item>
+        <item>D4 Produksi Film dan TV</item>
+        <item>D3 Sistem Informasi</item>
+    </string-array>
 </resources>
