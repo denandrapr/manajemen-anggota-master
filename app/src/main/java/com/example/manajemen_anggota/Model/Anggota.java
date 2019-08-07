@@ -6,17 +6,29 @@ public class Anggota {
     private String Nim;
     private String Prodi;
     private String Gambar;
+    private String NoTelp;
+    private String idLine;
 
     public Anggota() {
         //oke
     }
 
-    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar) {
+    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar, String noTelp, String IdLine) {
         Jenkel = jenkel;
         Nama = nama;
         Nim = nim;
         Prodi = prodi;
         Gambar = gambar;
+        NoTelp = noTelp;
+        idLine = IdLine;
+    }
+
+    public String getNoTelp() {
+        return NoTelp;
+    }
+
+    public String getIdLine() {
+        return idLine;
     }
 
     public String getGambar() {

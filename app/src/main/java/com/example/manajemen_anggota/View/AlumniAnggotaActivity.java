@@ -1,6 +1,5 @@
 package com.example.manajemen_anggota.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,13 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.manajemen_anggota.Adapter.AnggotaAdapter;
 import com.example.manajemen_anggota.Model.Anggota;
 import com.example.manajemen_anggota.R;
-import com.example.manajemen_anggota.TambahAnggota;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;

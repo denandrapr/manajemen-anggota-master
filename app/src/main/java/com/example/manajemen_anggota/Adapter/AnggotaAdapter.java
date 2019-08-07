@@ -37,7 +37,8 @@ public class AnggotaAdapter extends FirestoreRecyclerAdapter<Anggota, AnggotaAda
         String url = anggota.getGambar();
         Glide.with(viewHolder.profile_pic.getContext())
                 .load(url)
-                .placeholder(R.drawable.ellips2)
+                .circleCrop()
+                .placeholder(R.drawable.placeholder)
                 .into(viewHolder.profile_pic);
     }
 
