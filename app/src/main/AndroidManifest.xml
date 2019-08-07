@@ -24,7 +24,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
-        <activity android:name=".TambahAnggota"></activity>
+        <activity android:name=".View.TambahAnggota"></activity>
         <activity android:name=".View.DokumentasiActivity" />
         <activity android:name=".View.ProkerActivity" />
         <activity android:name=".View.KasActivity" />

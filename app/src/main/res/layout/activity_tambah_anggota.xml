@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".TambahAnggota">
+    tools:context=".View.TambahAnggota">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -148,7 +148,8 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/jenkel">
 
                 <RadioButton
                     android:id="@+id/rb_laki"
@@ -204,7 +205,7 @@
                 android:text="Nomer HP" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/qwe"
+                android:id="@+id/txt_hp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomer HP"
