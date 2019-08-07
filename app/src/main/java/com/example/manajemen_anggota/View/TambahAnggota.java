@@ -30,12 +30,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.manajemen_anggota.Model.Anggota;
 import com.example.manajemen_anggota.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -71,6 +73,7 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
 
     private static final int CAMERA_REQUEST_CODE = 1;
     private static final int GALLERY_INTENT = 2;
+    private FirebaseFirestore db;
 
     private RadioButton rb_jenkel;
     private StorageReference mRef;
@@ -86,6 +89,7 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.activity_tambah_anggota);
         ButterKnife.bind(this);
         mRef = FirebaseStorage.getInstance().getReference();
+        db = FirebaseFirestore.getInstance();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.prodi, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -136,24 +140,22 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
 //        }
 
         if (i.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
             File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
-                // Error occurred while creating the File...
+
             }
-            // Continue only if the File was successfully created
             if (photoFile != null) {
                 photoURI = FileProvider.getUriForFile(this,
-                        "com.example.android.fileprovider",
+                        "com.example.manajemen_anggota",
                         photoFile);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(i, CAMERA_REQUEST_CODE);
             }
         }
 
-        startActivityForResult(i, CAMERA_REQUEST_CODE);
+//        startActivityForResult(i, CAMERA_REQUEST_CODE);
     }
 
     @OnClick(R.id.img_storage)
@@ -167,24 +169,17 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK){
-            progressDialog.dismiss();
 //            Uri uriPhoto = data.getData();
 //            Bundle extras = data.getExtras();
-            Bitmap img = (Bitmap) data.getExtras().get("data");
+//            photoURI = data.getData();
 //            Log.d("logg", img.toString());
             Glide.with(this)
-                    .load(img)
+                    .load(photoURI)
                     .circleCrop()
                     .placeholder(R.drawable.placeholder)
                     .into(pic);
         }else if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK && data != null && data.getData() != null){
-            progressDialog.dismiss();
             photoURI = data.getData();
             Glide.with(this)
                     .load(photoURI)
@@ -235,7 +230,8 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
                         Uri downloadUrl = task.getResult();
-
+                        Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, downloadUrl.toString(), noHp, line);
+                        db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
 //                        Toast.makeText(TambahAnggota.this, downloadUrl.toString(), Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
