@@ -27,10 +27,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_data"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="572dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/toolbar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

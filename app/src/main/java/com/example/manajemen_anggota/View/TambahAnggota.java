@@ -135,10 +135,6 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
     @OnClick(R.id.img_camera)
     void camera_action(){
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (i.resolveActivity(getPackageManager()) != null){
-//            startActivityForResult(i, CAMERA_REQUEST_CODE);
-//        }
-
         if (i.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;
             try {
@@ -154,8 +150,6 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                 startActivityForResult(i, CAMERA_REQUEST_CODE);
             }
         }
-
-//        startActivityForResult(i, CAMERA_REQUEST_CODE);
     }
 
     @OnClick(R.id.img_storage)
@@ -170,10 +164,6 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
         super.onActivityResult(requestCode, resultCode, data);
         
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK){
-//            Uri uriPhoto = data.getData();
-//            Bundle extras = data.getExtras();
-//            photoURI = data.getData();
-//            Log.d("logg", img.toString());
             Glide.with(this)
                     .load(photoURI)
                     .circleCrop()
@@ -232,6 +222,9 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                         Uri downloadUrl = task.getResult();
                         Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, downloadUrl.toString(), noHp, line);
                         db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
+                        Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
 //                        Toast.makeText(TambahAnggota.this, downloadUrl.toString(), Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
@@ -239,30 +232,12 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                     }
                 }
             });
+        }else{
+            Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, "no image", noHp, line);
+            db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
+            Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
         }
-//            ref.putFile(photoURI)
-//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            progressDialog.dismiss();
-//                            Toast.makeText(TambahAnggota.this, "Sukses", Toast.LENGTH_SHORT).show();
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            progressDialog.dismiss();
-//                            Toast.makeText(TambahAnggota.this, "Gagal", Toast.LENGTH_SHORT).show();
-//                        }
-//                    })
-//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-//                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-//                                    .getTotalByteCount());
-//                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
-//                        }
-//                    });
-
     }
 }

@@ -24,8 +24,6 @@ import butterknife.ButterKnife;
 
 public class AnggotaAdapter extends FirestoreRecyclerAdapter<Anggota, AnggotaAdapter.ViewHolder> {
 
-    Context context;
-
     public AnggotaAdapter(@NonNull FirestoreRecyclerOptions<Anggota> options) {
         super(options);
     }
