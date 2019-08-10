@@ -28,7 +28,7 @@
         <activity android:name=".View.TambahAnggota"></activity>
         <activity android:name=".View.DokumentasiActivity" />
         <activity android:name=".View.ProkerActivity" />
-        <activity android:name=".View.KasActivity" />
+        <activity android:name=".View.KeuanganActivity" />
         <activity android:name=".View.AlumniAnggotaActivity" />
         <activity android:name=".View.SplashScreen">
             <intent-filter>

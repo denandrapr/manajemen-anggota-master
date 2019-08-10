@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.manajemen_anggota.View.AlumniAnggotaActivity;
 import com.example.manajemen_anggota.R;
 import com.example.manajemen_anggota.View.DokumentasiActivity;
-import com.example.manajemen_anggota.View.KasActivity;
+import com.example.manajemen_anggota.View.KeuanganActivity;
 import com.example.manajemen_anggota.View.ProkerActivity;
 
 import butterknife.BindView;
@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
 
     @OnClick(R.id.box1)
     void Kas(){
-        Intent i = new Intent(getActivity(), KasActivity.class);
+        Intent i = new Intent(getActivity(), KeuanganActivity.class);
         startActivity(i);
     }
 
