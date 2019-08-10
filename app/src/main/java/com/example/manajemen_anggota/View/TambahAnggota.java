@@ -42,6 +42,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.File;
 import java.io.IOException;
@@ -225,7 +226,7 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                         Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);
-//                        Toast.makeText(TambahAnggota.this, downloadUrl.toString(), Toast.LENGTH_SHORT).show();
+                        StyleableToast.makeText(TambahAnggota.this,"Sukses", Toast.LENGTH_SHORT, R.style.mytoast).show();
                     } else {
                         progressDialog.dismiss();
                         Toast.makeText(TambahAnggota.this, "gagal", Toast.LENGTH_SHORT).show();
