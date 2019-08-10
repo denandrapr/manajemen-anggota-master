@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="KAS"
+                        android:text="Catatan Keuangan"
                         android:textSize="16sp" />
 
                 </RelativeLayout>

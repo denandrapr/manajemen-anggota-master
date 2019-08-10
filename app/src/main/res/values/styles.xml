@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#fff</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#00796B</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/ic_success</item>
+        <item name="stLength">LONG</item>
+        <!--<item name="stGravity">top</item>-->
+        <item name="stRadius">5dp</item>
+    </style>
+
 </resources>
