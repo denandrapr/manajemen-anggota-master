@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manajemen_anggota.Adapter.AnggotaAdapter;
@@ -40,6 +44,10 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.fab)
     FloatingActionButton fab;
+    @BindView(R.id.total_anggota_baru)
+    TextView txtTotalAnggotaBaru;
+    @BindView(R.id.total_anggota_lama)
+    TextView txtAnggotaLama;
 
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
@@ -49,6 +57,7 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
     private ArrayList<Anggota> mArrayList;
     private List<Anggota> mAnggota = new ArrayList<>();
     int data_size = 0;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,37 +77,57 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
     }
 
     public void getData(String email){
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Mengambil data...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+
 
         Query q = anggotaRef;
 
         FirestoreRecyclerOptions<Anggota> options = new FirestoreRecyclerOptions.Builder<Anggota>()
                 .setQuery(q, Anggota.class)
                 .build();
-        progressDialog.dismiss();
         adapter = new AnggotaAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.list_data);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         count_data();
+        count_anggota_lama();
     }
 
     public void count_data(){
-        int size;
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mengambil data...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         db.collection("Anggota")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
-                            int i = 0;
+                            progressDialog.dismiss();
+                            i = 0;
                             for (QueryDocumentSnapshot document : task.getResult()){
                                 i += 1;
                             }
+                            txtAnggotaLama.setText(Integer.toString(i));
+                        }
+                    }
+                });
+    }
+
+    public void count_anggota_lama(){
+        db.collection("Anggota")
+                .whereEqualTo("angkatan", 18)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            i = 0;
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                i += 1;
+                            }
+                            txtTotalAnggotaBaru.setText(Integer.toString(i));
                         }
                     }
                 });

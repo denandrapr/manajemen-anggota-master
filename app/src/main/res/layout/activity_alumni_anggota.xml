@@ -4,42 +4,177 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".View.AlumniAnggotaActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/bar"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ANGGOTA"
-            android:fontFamily="@font/nunito_bold"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"/>
+        <LinearLayout
+            android:id="@+id/box1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/box"
+            android:elevation="1dp"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="4dp"
+            android:translationZ="13dp">
 
-    </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/total_anggota_lama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Total Anggota"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/total_anggota_baru"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Anggota Baru"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:background="@drawable/bar"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:fontFamily="@font/nunito_bold"
+                android:text="ANGGOTA"
+                android:textColor="@android:color/white" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </FrameLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_margin="16dp"-->
+    <!--android:layout_below="@id/toolbar"-->
+    <!--android:id="@+id/linear1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/box1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="140dp"-->
+    <!--android:layout_marginRight="8dp"-->
+    <!--android:layout_marginBottom="4dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/box_gradient_1"-->
+    <!--android:elevation="1dp"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingTop="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:paddingBottom="8dp">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:fontFamily="@font/nunito_bold"-->
+    <!--android:text="50"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--android:textSize="42sp" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/box2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="140dp"-->
+    <!--android:layout_marginRight="8dp"-->
+    <!--android:layout_marginBottom="4dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/box_gradient_2"-->
+    <!--android:elevation="1dp"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingTop="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:paddingBottom="8dp">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:fontFamily="@font/nunito_bold"-->
+    <!--android:text="150"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--android:textSize="42sp" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--</LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/toolbar" />
+        android:layout_below="@id/frame" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        app:srcCompat="@drawable/ic_action_name"/>
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_action_name" />
 
 </RelativeLayout>
