@@ -57,7 +57,7 @@ public class KeuanganActivity extends AppCompatActivity {
                                     JSONObject object = new JSONObject(params);
                                     JSONArray array = object.getJSONArray(object.toString());
                                     for (int i = 0; i < array.length(); i++){
-                                        
+
                                     }
                                 }catch (Exception e){
 
