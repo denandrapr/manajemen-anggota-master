@@ -8,12 +8,13 @@ public class Anggota {
     private String Gambar;
     private String NoTelp;
     private String idLine;
+    private String angkatan;
 
     public Anggota() {
         //oke
     }
 
-    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar, String noTelp, String IdLine) {
+    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar, String noTelp, String IdLine, String Angkatan) {
         Jenkel = jenkel;
         Nama = nama;
         Nim = nim;
@@ -21,6 +22,11 @@ public class Anggota {
         Gambar = gambar;
         NoTelp = noTelp;
         idLine = IdLine;
+        angkatan = Angkatan;
+    }
+
+    public String getAngkatan() {
+        return angkatan;
     }
 
     public String getNoTelp() {
