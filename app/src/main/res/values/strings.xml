@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Manajemen-Anggota</string>
+    <string name="app_name">My SJN</string>
 
     <!--login-->
     <string name="login_nim">NIM</string>

@@ -199,10 +199,11 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
         }else{
             jenkel = "L";
         }
-        doUpload(nim, nama, line, noHp, jenkel, spinner_prodi);
+        String angkatan = nim.substring(0,2);
+        doUpload(nim, nama, line, noHp, jenkel, spinner_prodi, angkatan);
     }
 
-    private void doUpload(String nim, String nama, String line, String noHp, String jenkel, String spinner_prodi) {
+    private void doUpload(String nim, String nama, String line, String noHp, String jenkel, String spinner_prodi, String angkatan) {
         final String[] url = new String[1];
         if (photoURI != null) {
             StorageReference ref = mRef.child("Profile/" + System.currentTimeMillis());
@@ -221,8 +222,10 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
                         Uri downloadUrl = task.getResult();
-                        Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, downloadUrl.toString(), noHp, line);
+
+                        Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, downloadUrl.toString(), noHp, line, angkatan);
                         db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
+
                         Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);
@@ -234,7 +237,7 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                 }
             });
         }else{
-            Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, "no image", noHp, line);
+            Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, "no image", noHp, line, angkatan);
             db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
             Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
