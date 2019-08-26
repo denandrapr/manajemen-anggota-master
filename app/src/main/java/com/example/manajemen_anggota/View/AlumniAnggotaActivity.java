@@ -116,7 +116,7 @@ public class AlumniAnggotaActivity extends AppCompatActivity {
 
     public void count_anggota_lama(){
         db.collection("Anggota")
-                .whereEqualTo("angkatan", "18")
+                .whereEqualTo("angkatan", "19")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

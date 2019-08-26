@@ -85,6 +85,11 @@ public class ProfileFragment extends Fragment{
                         progressDialog.dismiss();
                         Anggota anggota = null;
                         anggota = documentSnapshot.toObject(Anggota.class);
+                        Glide.with(getActivity())
+                                .load(anggota.getGambar())
+                                .circleCrop()
+                                .placeholder(R.drawable.placeholder)
+                                .into(imgProfile);
                         txtName.setText(anggota.getNama());
                         txtNim.setText(anggota.getNim());
                         txtNama.setText(anggota.getNama());
@@ -118,6 +123,14 @@ public class ProfileFragment extends Fragment{
             String uid = user.getEmail();
         }
         return view;
+    }
+
+    @OnClick(R.id.logout)
+    void logout(){
+        FirebaseAuth.getInstance().signOut();
+        Intent i = new Intent(getActivity(), LoginActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 
 //    @OnClick(R.id.logout)

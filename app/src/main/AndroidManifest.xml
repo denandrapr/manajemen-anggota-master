@@ -3,10 +3,12 @@
     package="com.example.manajemen_anggota">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera"
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -16,6 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.AnggotaDetailActivity"></activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.manajemen_anggota"
@@ -23,15 +27,15 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
-        <activity android:name=".View.TambahAnggota"></activity>
+
+        <activity android:name=".View.TambahAnggota" />
         <activity android:name=".View.DokumentasiActivity" />
         <activity android:name=".View.ProkerActivity" />
         <activity android:name=".View.KeuanganActivity" />
         <activity android:name=".View.AlumniAnggotaActivity" />
-        <activity android:name=".View.SplashScreen">
-        </activity>
+        <activity android:name=".View.SplashScreen"></activity>
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.MainActivity">
             <intent-filter>
