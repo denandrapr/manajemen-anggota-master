@@ -1,7 +1,7 @@
 package com.example.manajemen_anggota.Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.manajemen_anggota.View.AnggotaDetailActivity;
 import com.example.manajemen_anggota.Model.Anggota;
 import com.example.manajemen_anggota.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -23,6 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AnggotaAdapter extends FirestoreRecyclerAdapter<Anggota, AnggotaAdapter.ViewHolder> {
+
+    Context context;
 
     public AnggotaAdapter(@NonNull FirestoreRecyclerOptions<Anggota> options) {
         super(options);
@@ -47,7 +50,7 @@ public class AnggotaAdapter extends FirestoreRecyclerAdapter<Anggota, AnggotaAda
         return new ViewHolder(view);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 //        TextView txtNim;
         @BindView(R.id.nim)
         TextView txtNim;
@@ -59,8 +62,17 @@ public class AnggotaAdapter extends FirestoreRecyclerAdapter<Anggota, AnggotaAda
             super(itemView);
             ButterKnife.bind(this, itemView);
 //            txtNim = itemView.findViewById(R.id.nim);
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View view) {
+            String nim = txtNim.getText().toString();
+            Intent i = new Intent(view.getContext(), AnggotaDetailActivity.class);
+            i.putExtra("PassNim", nim);
+            view.getContext().startActivity(i);
+//            Toast.makeText(view.getContext(), "Nim : "+nim, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

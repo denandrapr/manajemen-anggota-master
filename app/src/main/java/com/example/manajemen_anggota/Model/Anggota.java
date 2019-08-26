@@ -9,12 +9,13 @@ public class Anggota {
     private String NoTelp;
     private String idLine;
     private String angkatan;
+    private String time;
 
     public Anggota() {
         //oke
     }
 
-    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar, String noTelp, String IdLine, String Angkatan) {
+    public Anggota(String jenkel, String nama, String nim, String prodi, String gambar, String noTelp, String IdLine, String Angkatan, String Time) {
         Jenkel = jenkel;
         Nama = nama;
         Nim = nim;
@@ -23,6 +24,15 @@ public class Anggota {
         NoTelp = noTelp;
         idLine = IdLine;
         angkatan = Angkatan;
+        time = Time;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getAngkatan() {

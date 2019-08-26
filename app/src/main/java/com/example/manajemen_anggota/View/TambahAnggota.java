@@ -20,6 +20,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -46,7 +47,9 @@ import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -91,6 +94,8 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
         ButterKnife.bind(this);
         mRef = FirebaseStorage.getInstance().getReference();
         db = FirebaseFirestore.getInstance();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.prodi, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -200,10 +205,15 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
             jenkel = "L";
         }
         String angkatan = nim.substring(0,2);
-        doUpload(nim, nama, line, noHp, jenkel, spinner_prodi, angkatan);
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        Calendar calobj = Calendar.getInstance();
+        String time = df.format(calobj.getTime());
+
+        doUpload(nim, nama, line, noHp, jenkel, spinner_prodi, angkatan, time);
     }
 
-    private void doUpload(String nim, String nama, String line, String noHp, String jenkel, String spinner_prodi, String angkatan) {
+    private void doUpload(String nim, String nama, String line, String noHp, String jenkel, String spinner_prodi, String angkatan, String time) {
         final String[] url = new String[1];
         if (photoURI != null) {
             StorageReference ref = mRef.child("Profile/" + System.currentTimeMillis());
@@ -223,7 +233,7 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                         progressDialog.dismiss();
                         Uri downloadUrl = task.getResult();
 
-                        Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, downloadUrl.toString(), noHp, line, angkatan);
+                        Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, downloadUrl.toString(), noHp, line, angkatan, time);
                         db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
 
                         Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
@@ -237,7 +247,7 @@ public class TambahAnggota extends AppCompatActivity implements AdapterView.OnIt
                 }
             });
         }else{
-            Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, "no image", noHp, line, angkatan);
+            Anggota anggota = new Anggota(jenkel, nama, nim, spinner_prodi, "no image", noHp, line, angkatan, time);
             db.collection("Anggota").document(nim+"@stikom.edu").set(anggota);
             Intent i = new Intent(TambahAnggota.this, AlumniAnggotaActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
